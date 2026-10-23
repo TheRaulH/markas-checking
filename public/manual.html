@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MARKAS · Línea gráfica v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{--rojo:#E22520;--onix:#1A1A1A;--blanco:#fff;--gris:#F6F6F6;--linea:#E2E2E2;--texto:#5E5E5E}
+*{box-sizing:border-box;margin:0}
+body{font:16px/1.5 Barlow,system-ui,sans-serif;color:var(--onix);background:#fff}
+main{max-width:880px;margin:0 auto;padding:48px 24px 96px}
+h1,h2,h3{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;line-height:1}
+h1{font-size:clamp(56px,12vw,112px)}h2{font-size:44px;margin-bottom:16px}h3{font-size:26px;margin-bottom:6px}
+section{padding:40px 0;border-top:2px solid var(--onix)}
+p{max-width:60ch;color:var(--texto)}
+.logo{width:150px;display:block;margin-bottom:32px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:20px}
+.sw{border:1px solid var(--linea)}.sw i{display:block;height:96px}.sw div{padding:10px 12px;font-size:14px}.sw b{display:block;font-size:16px}
+.bar{display:flex;height:28px;margin-top:20px;border:1px solid var(--linea)}
+.card{border:1px solid var(--linea);padding:20px}
+ul{padding-left:18px;color:var(--texto)}li{margin:4px 0}
+.no li::marker{color:var(--rojo)}
+.tag{display:inline-block;border:1px solid var(--onix);padding:2px 10px;font-weight:600;font-size:14px}
+</style></head><body><main>
+<img class="logo" src="/logo.png" alt="MARKAS">
+<h1>Línea gráfica v2</h1>
+<p style="margin-top:12px">Sólida, corporativa y minimalista. Blanco y negro como base; el rojo de la M como único acento.</p>
+
+<section><h2>Idea rectora</h2>
+<p>La M ya es el único elemento fuerte. Todo lo demás se calla: mucho blanco, negro firme, rojo escaso. Si todo es rojo, nada destaca.</p></section>
+
+<section><h2>Color</h2>
+<div class="grid">
+<div class="sw"><i style="background:#fff;border-bottom:1px solid var(--linea)"></i><div><b>Blanco</b>#FFFFFF · fondo</div></div>
+<div class="sw"><i style="background:#1A1A1A"></i><div><b>Negro MARKAS</b>#1A1A1A · títulos, botones, líneas</div></div>
+<div class="sw"><i style="background:#E22520"></i><div><b>Rojo M</b>#E22520 · solo acento</div></div>
+<div class="sw"><i style="background:#F6F6F6"></i><div><b>Gris base</b>#F6F6F6 · superficies</div></div>
+<div class="sw"><i style="background:#E2E2E2"></i><div><b>Gris línea</b>#E2E2E2 · bordes</div></div>
+<div class="sw"><i style="background:#5E5E5E"></i><div><b>Gris texto</b>#5E5E5E · secundario</div></div>
+</div>
+<div class="bar"><span style="flex:80;background:#fff"></span><span style="flex:17;background:#1A1A1A"></span><span style="flex:3;background:#E22520"></span></div>
+<p style="margin-top:8px;font-size:14px">Proporción: 80% blanco · 17% negro · 3% rojo.</p>
+<div class="grid" style="margin-top:28px">
+<div class="card"><h3>Rojo: sí</h3><ul><li>La M</li><li>Un dato clave por pieza (precio, n.º de premio)</li><li>Línea fina de énfasis</li></ul></div>
+<div class="card"><h3 style="color:var(--rojo)">Rojo: no</h3><ul class="no"><li>Fondos ni bloques grandes</li><li>Botones principales (van en negro)</li><li>Más de un uso por pantalla</li></ul></div>
+</div>
+<p style="margin-top:20px">Color funcional (solo en apps): verde #14804A = adentro · azul #1D4ED8 = salió. Siempre en línea o etiqueta, nunca como fondo.</p></section>
+
+<section><h2>Tipografía</h2>
+<div class="card"><h3 style="font-size:64px">CATÁLOGO MAYORISTA</h3><p>Bebas Neue · titulares, precios y números grandes. Siempre mayúsculas, peso único, sin negrita sintética.</p></div>
+<div class="card" style="margin-top:16px"><p style="color:var(--onix);font-weight:600">Barlow SemiBold · Refrigerador No Frost 420 L</p><p>Barlow Regular · textos, especificaciones y condiciones. Mínimo 14 px en pantalla.</p></div>
+<p style="margin-top:16px">Jerarquía: título → dato clave → especificación → condiciones. Dos familias, nada más.</p></section>
+
+<section><h2>Logotipo</h2>
+<p>Usar siempre el archivo maestro (<code>logo.png</code>, <code>logo-m.png</code>). No estirar, recolorear, inclinar ni reconstruir con texto. Área libre mínima: el ancho del asta de la M. Sobre fondo oscuro, usar versión blanca/roja del archivo vectorial original.</p>
+<p style="margin-top:12px"><b style="color:var(--onix)">MARKAS siempre al frente:</b> el logo de MARKAS va en posición fija (arriba izquierda); los logos de Philips, Westinghouse, Polarmax y otras marcas propias van en una fila inferior, mismo alto, en negro o su color oficial, nunca más grandes que MARKAS.</p></section>
+
+<section><h2>Composición</h2>
+<ul><li>Esquinas rectas. Líneas de 1 px (gris) y 2 px (negro).</li><li>Sin sombras, degradados, biseles ni patrones decorativos.</li><li>Mucho aire: el espacio vacío es parte del diseño.</li><li>Una pieza, un mensaje, una acción.</li><li>Alineación a la izquierda; retícula de 8 px.</li></ul>
+<p style="margin-top:16px"><span class="tag">Botón principal: negro, texto blanco, Bebas Neue</span></p></section>
+</main></body></html>

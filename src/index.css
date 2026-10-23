@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-white text-onix font-sans antialiased; }
+  :focus-visible { outline: 3px solid #191919; outline-offset: 2px; }
+  button { touch-action: manipulation; }
+}
+
+
+@keyframes subir { from { transform: translateY(24px); opacity: 0 } to { transform: none; opacity: 1 } }
+@keyframes aparecer { from { opacity: 0 } to { opacity: 1 } }
+.anim-subir { animation: subir .22s ease-out }
+.anim-aparecer { animation: aparecer .18s ease-out }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-subir, .anim-aparecer { animation: none }
+}
+
+.font-display { font-weight: 400 !important; letter-spacing: .02em; }
