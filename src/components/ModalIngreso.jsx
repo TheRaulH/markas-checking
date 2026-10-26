@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
-import { ASESORES, ESTADOS, PREMIO_TOP } from '../lib/constants.js'
+import { ASESORES, ESTADOS } from '../lib/constants.js'
+import { ultimoAsesor } from '../lib/store.js'
 import { hora } from '../lib/utils.js'
 import Interruptor from './Interruptor.jsx'
 
 export default function ModalIngreso({ g, yaIngresaron, onClose, onSave }) {
   const esNuevo = g.estado === ESTADOS.PENDIENTE
   const esDentro = g.estado === ESTADOS.DENTRO
-  const [asesor, setAsesor] = useState(g.asesor || '')
-  const [n, setN] = useState(g.acompanantes === '' ? Number(g.cantidad) || 1 : Number(g.acompanantes))
+  const [asesor, setAsesor] = useState(g.asesor || ultimoAsesor())
+  const [n, setN] = useState(g.acompanantes === '' ? 1 : Number(g.acompanantes))
   const [titular, setTitular] = useState(g.regaloTitular === 'Sí')
   const [acomp, setAcomp] = useState(g.regaloAcomp === 'Sí')
 
@@ -21,9 +22,7 @@ export default function ModalIngreso({ g, yaIngresaron, onClose, onSave }) {
     }
   }, [onClose])
 
-  const numero = yaIngresaron + 1
-  const premio = esNuevo && numero <= PREMIO_TOP
-  const difiere = n !== Number(g.cantidad)
+  const premio = esNuevo && yaIngresaron === 0
 
   const base = () => ({
     ...g,
@@ -55,8 +54,7 @@ export default function ModalIngreso({ g, yaIngresaron, onClose, onSave }) {
           <div className="min-w-0">
             <h2 id="modal-titulo" className="font-display text-3xl uppercase leading-none">{g.nombre}</h2>
             <p className="text-sm text-texto">
-              {g.telefono} · Registró {g.cantidad} {Number(g.cantidad) === 1 ? 'asistente' : 'asistentes'}
-              {g.horaIngreso && <> · Ingresó {hora(g.horaIngreso)}</>}
+              {g.horaIngreso ? <>Ingresó {hora(g.horaIngreso)}{g.horaSalida && <> · Salió {hora(g.horaSalida)}</>}</> : 'Aún no ingresa'}
             </p>
           </div>
           <button onClick={onClose} aria-label="Cerrar" className="flex h-11 w-11 shrink-0 items-center justify-center border-2 border-plata hover:border-onix">
@@ -67,10 +65,10 @@ export default function ModalIngreso({ g, yaIngresaron, onClose, onSave }) {
         <div className="space-y-5 overflow-y-auto px-4 py-4">
           {premio && (
             <div className="flex items-center gap-3 border-2 border-onix p-3">
-              <span className="font-display text-6xl leading-none text-rojo">{numero}</span>
+              <span className="font-display text-6xl leading-none text-rojo">1°</span>
               <p className="text-sm font-bold leading-snug">
-                Será el invitado n.° {numero} en ingresar.
-                <br />Entregar premio especial.
+                Es el primer invitado en ingresar.
+                <br />Entregar el premio por puntualidad.
               </p>
             </div>
           )}
@@ -92,17 +90,12 @@ export default function ModalIngreso({ g, yaIngresaron, onClose, onSave }) {
           </section>
 
           <section>
-            <h3 className="mb-2 text-sm font-bold">Personas que llegaron</h3>
+            <h3 className="mb-2 text-sm font-bold">Personas que ingresan (titular + acompañantes)</h3>
             <div className="flex items-center gap-3">
               <button onClick={() => setN(Math.max(1, n - 1))} aria-label="Una persona menos" className="h-14 w-14 border-2 border-onix text-3xl font-bold active:bg-plata">−</button>
               <div className="flex-1 text-center font-display text-6xl leading-none">{n}</div>
               <button onClick={() => setN(n + 1)} aria-label="Una persona más" className="h-14 w-14 border-2 border-onix bg-onix text-3xl font-bold text-white active:bg-texto">+</button>
             </div>
-            {difiere && (
-              <p className="mt-2 border-l-4 border-rojo bg-plata-claro px-3 py-1.5 text-sm font-semibold">
-                Difiere del formulario ({g.cantidad}).
-              </p>
-            )}
           </section>
 
           <section className="space-y-2">

@@ -1,8 +1,6 @@
 export const normalizar = (s = '') =>
   String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
 
-export const soloDigitos = (s = '') => String(s).replace(/\D/g, '')
-
 export const hora = (iso) =>
   iso ? new Date(iso).toLocaleTimeString('es-BO', { hour: '2-digit', minute: '2-digit' }) : ''
 

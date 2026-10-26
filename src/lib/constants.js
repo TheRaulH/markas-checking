@@ -1,3 +1,2 @@
 export const ESTADOS = { PENDIENTE: 'Pendiente', DENTRO: 'En el evento', SALIO: 'Salió' }
 export const ASESORES = ['Fabi', 'Elmer', 'Carmen']
-export const PREMIO_TOP = 3
